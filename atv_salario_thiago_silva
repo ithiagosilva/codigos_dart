@@ -1,0 +1,99 @@
+class NovoSalario {
+  double _salarioBase = 0;
+  double _salarioHora = 0;
+  double _salarioDia = 0;
+  double _horaExtra = 0;
+  double _horaFalta = 0;
+  double _horasTrabalhadas = 0;
+  double _salarioFinal = 0;
+
+  // Getter
+  double get salarioBase => _salarioBase;
+  double get salarioHora => _salarioHora;
+  double get salarioDia => _salarioDia;
+  double get horaExtra => _horaExtra;
+  double get horasTrabalhadas => _horasTrabalhadas;
+  double get horaFalta => _horaFalta;
+  double get salarioFinal => _salarioFinal;
+
+  // Setter
+  set salarioBase(double novoSalarioBase) => _salarioBase = novoSalarioBase;
+  set horaExtra(double novaHoraExtra) => _horaExtra = novaHoraExtra;
+  set horasTrabalhadas(double novaHorasTrabalhadas) =>
+      _horasTrabalhadas = novaHorasTrabalhadas;
+  set horaFalta(double novaHoraFalta) => _horaFalta = novaHoraFalta;
+  set salarioHora(double novoSalarioHora) => _salarioHora = novoSalarioHora;
+  set salarioDia(double novoSalarioDia) => _salarioDia = novoSalarioDia;
+
+  double calcularSalarioDia() {
+    return (this._salarioBase / 30);
+  }
+
+  double calcularSalarioHora() {
+    return (this.calcularSalarioDia() / 8);
+  }
+
+  double calcularHoraExtra() {
+    if (horaExtra > 0) {
+      return (this._horaExtra * (this.calcularSalarioHora() * 1.5));
+    } else {
+      return (0);
+    }
+  }
+
+  double calcularDescontos() {
+    if (horaFalta > 0) {
+      return ((this._horaFalta * calcularSalarioHora()) -
+          this.calcularSalarioHora() +
+          this.calcularSalarioHora());
+    } else {
+      return (0);
+    }
+  }
+
+  double calcularSalarioFinal() {
+    return (this._salarioFinal =
+        this._salarioBase + calcularHoraExtra() - calcularDescontos());
+  }
+}
+
+void main() {
+  var salario1 = NovoSalario();
+
+  salario1.salarioBase = 2500;
+  salario1.horaExtra = 5;
+  salario1.horaFalta = 1;
+
+  print(
+    "Salario Base (Mensal): R\$ ${salario1.salarioBase.toStringAsFixed(2)}",
+  );
+  print("Salario dia: R\$ ${salario1.calcularSalarioDia().toStringAsFixed(2)}");
+  print(
+    "Salario Hora: R\$ ${salario1.calcularSalarioHora().toStringAsFixed(2)}",
+  );
+  print("================================================================");
+  print(
+    "Este Funcionário Trabalhou ${salario1.horaExtra} Hora(s) Extras Neste Mês",
+  );
+  print(
+    "Valor Das Horas Extras: R\$: ${salario1.calcularHoraExtra().toStringAsFixed(2)}",
+  );
+  print(
+    "Salario Base Com Horas Extras: R\$ ${(salario1.calcularHoraExtra() + salario1.salarioBase).toStringAsFixed(2)}",
+  );
+  print("================================================================");
+  print("Este Funcionário Faltou ${salario1.horaFalta} Hora(s) Neste Mês");
+  print(
+    "Valor Descontado Por Horas Não Cumpridas: ${salario1.calcularDescontos().toStringAsFixed(2)}",
+  );
+  print(
+    "Salario Base Com Descontos: R\$ ${(salario1.salarioBase - salario1.calcularDescontos()).toStringAsFixed(2)}",
+  );
+  print("================================================================");
+  print(
+    "Com os Descontos e Acréscimos Referentes a Este Mês O Funcionário Receberá",
+  );
+  print(
+    "Salario Final: R\$ ${salario1.calcularSalarioFinal().toStringAsFixed(2)}",
+  );
+}
