@@ -1,0 +1,50 @@
+// 2) Criar uma classe chamada Imovel que será responsável por calcular o IPTU (Imposto Predial e Territorial Urbano) de um imóvel, com base na área construída. A classificação do valor do IPTU será feita conforme a seguinte tabela de faixas de área construída:
+
+// Para imóveis com até 50 m² de área construída, o IPTU será R$ 500.
+// Para imóveis com de 51 m² a 100 m² de área construída, o IPTU será R$ 800.
+// Para imóveis com de 101 m² a 200 m² de área construída, o IPTU será R$ 1.200.
+// Para imóveis com mais de 200 m² de área construída, o IPTU será R$ 2.000.
+// Caso o imóvel não tenha área construída (área igual a 0 m²), o IPTU será um valor base de R$ 300.
+
+// * Os setters e getters devem ser implementados sob a forma compactada
+
+// Critério: Relacionamento de Conceitos
+
+class Imovel {
+  int _areaConstruida = 0;
+  String _precoIptu = '';
+
+  // Getter
+  int get areaConstruida => _areaConstruida;
+  String get precoIptu => _precoIptu;
+
+  // Setter
+  set areaConstruida(int novaAreaConstruida) =>
+      _areaConstruida = novaAreaConstruida;
+
+  String calcularIptu() {
+    if (this._areaConstruida < 0) {
+      return (this._precoIptu = 'Valor Inválido');
+    }
+    else if (this._areaConstruida <= 0) {
+      return (this._precoIptu = 'O IPTU será R\$ 300');
+    }
+      else if (this._areaConstruida <= 50) {
+      return (this._precoIptu = 'o IPTU será R\$ 500.');
+    } else if (this._areaConstruida <= 100) {
+      return (this._precoIptu = 'o IPTU será R\$ 800');
+    } else if (this._areaConstruida <= 200) {
+      return (this._precoIptu = 'o IPTU será R\$ 1200');
+    } else {
+      return (this._precoIptu = 'O IPTU será R\$ 2000');
+    }
+  }
+}
+
+void main() {
+  var iptu1 = Imovel();
+  iptu1.areaConstruida = 201;
+  iptu1.calcularIptu();
+
+  print('${iptu1.precoIptu}');
+}
