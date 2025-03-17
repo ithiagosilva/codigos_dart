@@ -1,0 +1,66 @@
+class Imovel {
+  double _areaConstruida = 0;
+
+  // Getter
+  double get areaConstruida => _areaConstruida;
+
+  // Setter
+  set areaConstruida(double novaArea) => _areaConstruida = novaArea;
+
+  // IPTU
+  String calcularIPTU() {
+    if (_areaConstruida == 0) {
+      return "IPTU: R\$ 300";
+    } else if (_areaConstruida <= 50) {
+      return "IPTU: R\$ 500";
+    } else if (_areaConstruida <= 100) {
+      return "IPTU: R\$ 800";
+    } else if (_areaConstruida <= 200) {
+      return "IPTU: R\$ 1.200";
+    } else {
+      return "IPTU: R\$ 2.000";
+    }
+  }
+}
+
+void main() {
+  var imovel = Imovel();
+  imovel.areaConstruida = 0;
+
+  print("Área Construida: ${imovel.areaConstruida} m²");
+  print(imovel.calcularIPTU());
+
+  print("------------------------------------");
+
+  var imovel2 = Imovel();
+  imovel2.areaConstruida = 50;
+
+  print("Área Construida: ${imovel2.areaConstruida} m²");
+  print(imovel2.calcularIPTU());
+
+  print("------------------------------------");
+
+  var imovel3 = Imovel();
+  imovel3.areaConstruida = 100;
+
+  print("Área Construida: ${imovel3.areaConstruida} m²");
+  print(imovel3.calcularIPTU());
+
+  print("------------------------------------");
+
+  var imovel4 = Imovel();
+  imovel4.areaConstruida = 200;
+
+  print("Área Construida: ${imovel4.areaConstruida} m²");
+  print(imovel4.calcularIPTU());
+
+  print("------------------------------------");
+
+  var imovel5 = Imovel();
+  imovel5.areaConstruida = 500;
+
+  print("Área Construida: ${imovel5.areaConstruida} m²");
+  print(imovel5.calcularIPTU());
+
+  print("------------------------------------");
+}
