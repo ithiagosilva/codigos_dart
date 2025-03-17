@@ -1,0 +1,42 @@
+class Salario {
+  double _salarioBase = 0;
+  double _valorHoraExtra = 0;
+  double _valorHoraFalta = 0;
+  double _salarioComDescontoEAcrescimo = 0;
+
+  // Getter
+  double get salarioBase => _salarioBase;
+  double get valorHoraExtra => _valorHoraExtra;
+  double get valorHoraFalta => _valorHoraFalta;
+  double get salarioComDescontoEAcrescimo => _salarioComDescontoEAcrescimo;
+
+  // Setter
+  set salarioBase(double novoSalarioBase) => _salarioBase = novoSalarioBase;
+  set valorHoraExtra(double novoValorHoraExtra) => _valorHoraExtra = novoValorHoraExtra;
+  set valorHoraFalta(double novoValorHoraFalta) => _valorHoraFalta = novoValorHoraFalta;
+
+  void calcularSalarioComDescontoEAcrescimo(int horasExtras, int horasFaltas) {
+    double totalAcrescimo = horasExtras * _valorHoraExtra;
+    double totalDesconto = horasFaltas * _valorHoraFalta;
+    _salarioComDescontoEAcrescimo = _salarioBase + totalAcrescimo - totalDesconto;
+  }
+}
+
+void main() {
+  var salario = Salario();
+  salario.salarioBase = 2000; 
+  salario.valorHoraExtra = 25;
+  salario.valorHoraFalta = 20; 
+
+  int horasExtras = 10; 
+  int horasFaltas = 5; 
+
+  salario.calcularSalarioComDescontoEAcrescimo(horasExtras, horasFaltas);
+
+  print("Salário base: R\$ ${salario.salarioBase}");
+  print("Valor de acréscimo (horas extras): R\$ ${horasExtras * salario.valorHoraExtra}");
+  print("Valor de desconto (horas faltas): R\$ ${horasFaltas * salario.valorHoraFalta}");
+  print("Salário com desconto e acréscimo: R\$ ${salario.salarioComDescontoEAcrescimo}");
+}
+
+
