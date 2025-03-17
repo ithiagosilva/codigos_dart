@@ -1,0 +1,47 @@
+class Pessoa {
+  double _peso = 0;
+  double _altura = 0;
+
+  // Getters
+  double get peso => _peso;
+  double get altura => _altura;
+
+  // Setters
+  set peso(double novoPeso) => _peso = novoPeso;
+  set altura(double novaAltura) => _altura = novaAltura;
+
+  // Calcular o IMC
+  double calcularIMC() {
+    return _peso / (_altura * _altura);
+  }
+
+  // Classificar o IMC
+  String classificacaoIMC() {
+    if (_altura <= 0) {
+      return "Altura inválida.";
+    }
+
+    double imc = calcularIMC();
+    if (imc < 18.5) {
+      return "IMC: ${imc.toStringAsFixed(2)} - Abaixo do peso";
+    } else if (imc < 24.9) {
+      return "IMC: ${imc.toStringAsFixed(2)} - Peso normal";
+    } else if (imc < 29.9) {
+      return "IMC: ${imc.toStringAsFixed(2)} - Sobrepeso";
+    } else {
+      return "IMC: ${imc.toStringAsFixed(2)} - Obesidade";
+    }
+  }
+}
+
+void main() {
+  var pessoa = Pessoa();
+  pessoa.peso = 65;
+  pessoa.altura = 1.68;
+
+  print("Peso: ${pessoa.peso} kg");
+  print("Altura: ${pessoa.altura} m");
+  print(pessoa.classificacaoIMC());
+}
+
+
