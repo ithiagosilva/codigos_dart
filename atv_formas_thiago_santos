@@ -1,0 +1,91 @@
+// Definição da classe abstrata 
+abstract class Forma {
+  // Método abstrato (sem implementação)
+  void desenhar();
+  
+  // Método concreto (com implementação)
+  void area();
+  
+}
+
+
+// Subclasse concreta que estende a classe abstrata
+class Circulo extends Forma {
+  double raio;
+  double pi= 3.14;
+
+  Circulo(this.raio);
+  @override
+  void desenhar() {
+    print("Desenhando um círculo com raio $raio.");
+  }
+  
+  @override   
+  void area(){
+    print("Área do circulo:");
+    print(pi * (raio * raio));
+    print("--------------------------------------------------------");
+  }
+}
+
+
+// Outra subclasse concreta que estende a classe abstrata
+
+class Retangulo extends Forma {
+  double comprimento;
+  double altura;
+  Retangulo(this.comprimento, this.altura);
+  @override 
+  void desenhar() {
+    print("Desenhando retângulo com largura $comprimento e altura $altura.");
+  }
+  
+    @override   
+  void area(){
+    print("Área do retangulo:");
+    print( comprimento * altura);
+    print("--------------------------------------------------------");
+  }
+}
+
+ // Outra subclasse concreta que estende a classe abstrata
+
+class Triangulo extends Forma {
+  double comprimento;
+  double altura;
+  Triangulo(this.comprimento, this.altura);
+  @override 
+  void desenhar() {
+    print("Desenhando triângulo com base $comprimento e altura $altura.");
+  }
+  
+    @override   
+  void area(){
+    print("Área do triângulo:");
+    print((comprimento * altura) / 2);
+    print("--------------------------------------------------------");
+  }
+
+
+}
+
+
+void main() {
+
+  // Criando instâncias das subclasses
+
+  Forma circulo = Circulo(5.0);
+  Forma retangulo = Retangulo(10.0, 20.0);
+  Forma triangulo = Triangulo(15, 20);
+
+  // Chamando métodos
+  circulo.desenhar(); // "Desenhando um círculo com raio 5.0."
+  circulo.area();     // "Calculando a área."
+  
+  retangulo.desenhar(); // "Desenhando um retângulo com largura 10.0 e altura 20.0."
+  retangulo.area();     // "Calculando a área."
+  
+  triangulo.desenhar(); // "Desenhando um triangulo com base 10.0 e altura 20.0."
+  triangulo.area();     // "Calculando a área."
+
+}
