@@ -1,0 +1,168 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const CalculadoraIdadeApp());
+}
+
+class CalculadoraIdadeApp extends StatelessWidget {
+  const CalculadoraIdadeApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Calculadora de Idade',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const CalculadoraIdadeFormulario(),
+    );
+  }
+}
+
+class CalculadoraIdadeFormulario extends StatefulWidget {
+  const CalculadoraIdadeFormulario({super.key});
+
+  @override
+  _CalculadoraIdadeFormularioState createState() => _CalculadoraIdadeFormularioState();
+}
+
+class _CalculadoraIdadeFormularioState extends State<CalculadoraIdadeFormulario> {
+  final TextEditingController _nome = TextEditingController();
+  final TextEditingController _anoNascimento = TextEditingController();
+
+  String _resultadoIdade = '';
+  String _resultadoDiasVividos = '';
+  String _resultadoMesesVividos = '';
+
+  void _calcularIdade() {
+    final String nome = _nome.text;
+    final int? anoNascimento = int.tryParse(_anoNascimento.text);
+
+    if (nome.isNotEmpty && anoNascimento != null) {
+      final int anoAtual = DateTime.now().year;
+      final int idade = anoAtual - anoNascimento;
+
+      setState(() {
+        _resultadoIdade = '$nome tem $idade anos.';
+        _resultadoDiasVividos = '';
+        _resultadoMesesVividos = '';
+      });
+    } else {
+      setState(() {
+        _resultadoIdade = 'Por favor, insira um nome e um ano de nascimento válidos.';
+        _resultadoDiasVividos = '';
+        _resultadoMesesVividos = '';
+      });
+    }
+  }
+
+  void _calcularDiasVividos() {
+    final String nome = _nome.text;
+    final int? anoNascimento = int.tryParse(_anoNascimento.text);
+
+    if (nome.isNotEmpty && anoNascimento != null) {
+      final int anoAtual = DateTime.now().year;
+      final int idade = anoAtual - anoNascimento;
+      final int diasVividos = idade * 365;
+
+      setState(() {
+        _resultadoDiasVividos = '$nome já viveu aproximadamente $diasVividos dias.';
+        _resultadoIdade = '';
+        _resultadoMesesVividos = '';
+      });
+    } else {
+      setState(() {
+        _resultadoDiasVividos =
+            'Por favor, insira um nome e um ano de nascimento válidos.';
+        _resultadoIdade = '';
+        _resultadoMesesVividos = '';
+      });
+    }
+  }
+
+  void _calcularMesesVividos() {
+    final String nome = _nome.text;
+    final int? anoNascimento = int.tryParse(_anoNascimento.text);
+
+    if (nome.isNotEmpty && anoNascimento != null) {
+      final int anoAtual = DateTime.now().year;
+      final int idade = anoAtual - anoNascimento;
+      final int mesesVividos = idade * 12;
+
+      setState(() {
+        _resultadoMesesVividos =
+            '$nome já viveu aproximadamente $mesesVividos meses.';
+        _resultadoIdade = '';
+        _resultadoDiasVividos = '';
+      });
+    } else {
+      setState(() {
+        _resultadoMesesVividos =
+            'Por favor, insira um nome e um ano de nascimento válidos.';
+        _resultadoIdade = '';
+        _resultadoDiasVividos = '';
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Calculadora de Idade'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: _nome,
+              decoration: const InputDecoration(labelText: 'Nome'),
+            ),
+            TextField(
+              controller: _anoNascimento,
+              decoration: const InputDecoration(labelText: 'Ano de Nascimento'),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton(
+                  onPressed: _calcularIdade,
+                  child: const Text(' Idade'),
+                ),
+                ElevatedButton(
+                  onPressed: _calcularDiasVividos,
+                  child: const Text(' Dias Vividos'),
+                ),
+                ElevatedButton(
+                  onPressed: _calcularMesesVividos,
+                  child: const Text(' Meses Vividos'),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Text(
+              _resultadoIdade,
+              style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              _resultadoDiasVividos,
+              style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              _resultadoMesesVividos,
+              style: const TextStyle(fontSize: 16),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
