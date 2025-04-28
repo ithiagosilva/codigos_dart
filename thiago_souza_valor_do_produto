@@ -1,0 +1,89 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Calculadora de Produtos',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const CalculadoraProdutos(),
+    );
+  }
+}
+
+class CalculadoraProdutos extends StatefulWidget {
+  const CalculadoraProdutos({super.key});
+
+  @override
+  State<CalculadoraProdutos> createState() => _CalculadoraProdutosState();
+}
+
+class _CalculadoraProdutosState extends State<CalculadoraProdutos> {
+  double precoUnitario = 0.0;
+  int quantidade = 0;
+  double valorTotal = 0.0;
+
+  void _calcularValorTotal() {
+    setState(() {
+      valorTotal = precoUnitario * quantidade;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Calculadora de Produtos'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            TextField(
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
+                labelText: 'Preço Unitário',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  precoUnitario = double.tryParse(value) ?? 0.0;
+                  _calcularValorTotal();
+                });
+              },
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Quantidade',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  quantidade = int.tryParse(value) ?? 0;
+                  _calcularValorTotal();
+                });
+              },
+            ),
+            const SizedBox(height: 30),
+            Text(
+              'Valor Total: R\$ ${valorTotal.toStringAsFixed(2)}',
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
