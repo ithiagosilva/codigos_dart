@@ -1,0 +1,89 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Conversor de Horas',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const ConversorHoras(),
+    );
+  }
+}
+
+class ConversorHoras extends StatefulWidget {
+  const ConversorHoras({super.key});
+
+  @override
+  State<ConversorHoras> createState() => _ConversorHorasState();
+}
+
+class _ConversorHorasState extends State<ConversorHoras> {
+  int? horas;
+  int minutos = 0;
+  int segundos = 0;
+
+  void converter() {
+    setState(() {
+      if (horas != null) {
+        minutos = horas! * 60;
+        segundos = minutos * 60;
+      } else {
+        minutos = 0;
+        segundos = 0;
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Conversor de Horas'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            TextField(
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Horas',
+                border: OutlineInputBorder(),
+              ),
+              onChanged: (value) {
+                setState(() {
+                  horas = int.tryParse(value);
+                });
+              },
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: converter,
+              child: const Text('Converter'),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Minutos: $minutos',
+              style: const TextStyle(fontSize: 18),
+            ),
+            Text(
+              'Segundos: $segundos',
+              style: const TextStyle(fontSize: 18),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
