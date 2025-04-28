@@ -1,0 +1,111 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text('Calculadora de Idade')),
+
+        body: SomadorForm(),
+      ),
+    );
+  }
+}
+
+class SomadorForm extends StatefulWidget {
+  @override
+  _SomadorFormState createState() => _SomadorFormState();
+}
+
+class _SomadorFormState extends State<SomadorForm> {
+  final TextEditingController _nome = TextEditingController();
+
+  final TextEditingController _anoNasc = TextEditingController();
+
+  String _resultado = '';
+
+  void _calcIdade() {
+    final String? nome = (_nome.text);
+
+    final double? anoNasc = double.tryParse(_anoNasc.text);
+    final double idade = 2025 - anoNasc!;
+
+    setState(() {
+      _resultado = 'Olá ${nome}, sua idade aproximada é: $idade';
+    });
+  }
+
+  void _diasVividos() {
+    final String? nome = (_nome.text);
+
+    final double? anoNasc = double.tryParse(_anoNasc.text);
+    final double idade = 2025 - anoNasc!;
+    final double diasVivi = idade * 365;
+
+    setState(() {
+      _resultado = 'Olá ${nome}, você tem: ${diasVivi} dias vividos';
+    });
+  }
+
+  void _mesesVividos() {
+    final String? nome = (_nome.text);
+
+    final double? anoNasc = double.tryParse(_anoNasc.text);
+    final double idade = 2025 - anoNasc!;
+    final double mesesVivi = idade * 12;
+
+    setState(() {
+      _resultado = 'Olá ${nome}, você tem: ${mesesVivi} meses vividos';
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+
+        children: [
+          TextField(
+            controller: _nome,
+
+            decoration: InputDecoration(labelText: 'Nome'),
+
+            keyboardType: TextInputType.number,
+          ),
+
+          TextField(
+            controller: _anoNasc,
+
+            decoration: InputDecoration(labelText: 'Ano de Nascimento'),
+
+            keyboardType: TextInputType.number,
+          ),
+
+          SizedBox(height: 20),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+            children: [
+              ElevatedButton(onPressed: _calcIdade, child: Text('Idade')),
+              ElevatedButton(onPressed: _diasVividos, child: Text('Dias')),
+              ElevatedButton(onPressed: _mesesVividos, child: Text('Meses')),
+
+              SizedBox(height: 20),
+
+              Text(_resultado, style: TextStyle(fontSize: 24)),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
