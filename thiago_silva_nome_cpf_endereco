@@ -1,0 +1,97 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(
+    MaterialApp(
+      title: 'Exemplo de Texto Flutter',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: Scaffold(
+        appBar: AppBar(title: Text('Tela Principal')),
+        body: MyHomePage(),
+      ),
+    ),
+  );
+}
+
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final TextEditingController _nomeController = TextEditingController();
+  final TextEditingController _cpfController = TextEditingController();
+  final TextEditingController _enderecoController = TextEditingController();
+  String _displayText = 'Atualização de componentes';
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(_displayText, style: TextStyle(fontSize: 24)),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextField(
+              controller: _nomeController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Nome',
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextField(
+              controller: _cpfController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'CPF',
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: TextField(
+              controller: _enderecoController,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Endereço',
+              ),
+            ),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                _displayText = _nomeController.text;
+              });
+            },
+            child: Text('Atualizar Nome'),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                _displayText = _cpfController.text;
+              });
+            },
+            child: Text('Atualizar CPF'),
+          ),
+          SizedBox(height: 20),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                _displayText = _enderecoController.text;
+              });
+            },
+            child: Text('Atualizar Endereço'),
+          ),
+        ],
+      ),
+    );
+  }
+}
