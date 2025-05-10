@@ -41,8 +41,10 @@ class _CalculadoraProdutosState extends State<CalculadoraProdutos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calculadora de Produtos'),
+        title: const Text('Calculadora de Produtos', style: TextStyle(color: Colors.black), ),
+        backgroundColor: Colors.white,
       ),
+      backgroundColor: const Color(0xFFD3D3D3),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -86,4 +88,3 @@ class _CalculadoraProdutosState extends State<CalculadoraProdutos> {
     );
   }
 }
-
