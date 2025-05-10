@@ -49,6 +49,7 @@ class _ConversorHorasState extends State<ConversorHoras> {
       appBar: AppBar(
         title: const Text('Conversor de Horas'),
       ),
+       backgroundColor: const Color(0xFF708090),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -87,4 +88,3 @@ class _ConversorHorasState extends State<ConversorHoras> {
     );
   }
 }
-
