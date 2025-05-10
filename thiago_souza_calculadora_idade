@@ -12,7 +12,7 @@ class CalculadoraIdadeApp extends StatelessWidget {
     return MaterialApp(
       title: 'Calculadora de Idade',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+       primaryColor: Color.fromARGB(255, 152, 163, 172),
       ),
       home: const CalculadoraIdadeFormulario(),
     );
@@ -109,8 +109,10 @@ class _CalculadoraIdadeFormularioState extends State<CalculadoraIdadeFormulario>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calculadora de Idade'),
+        title: const Text('Calculadora de Idade', style: TextStyle(color: Colors.black),),
+        backgroundColor: Colors.white,
       ),
+      backgroundColor: const Color(0xFF4682B4),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
