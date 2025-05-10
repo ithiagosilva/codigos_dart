@@ -1,5 +1,3 @@
-Nome,Cpf e Endereço
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +8,7 @@ void main() {
       theme: ThemeData(primarySwatch: Colors.blue),
 
       home: Scaffold(
+        backgroundColor: Color(0xFFA9A9A9),
         appBar: AppBar(title: Text('Tela Principal')),
 
         body: MyHomePage(),
@@ -123,3 +122,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
