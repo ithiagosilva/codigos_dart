@@ -127,6 +127,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'LISTVIEW CUSTOMIZADO',
       home: Scaffold(
+         backgroundColor: Color(0xFFFFDEAD),
         appBar: AppBar(title: const Text('LISTVIEW CUSTOMIZADO')),
         body: ListView.builder(
           itemCount: data.length,
@@ -136,7 +137,7 @@ class _MyAppState extends State<MyApp> {
               padding: const EdgeInsets.all(8.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.red[200],
+                  color: Color(0xFFD2691E),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 child: Padding(
