@@ -1,0 +1,1693 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Questionário',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(primarySwatch: Colors.deepPurple),
+      home: Questionario(),
+    );
+  }
+}
+
+class Questionario extends StatefulWidget {
+  @override
+  QuestionarioState createState() => QuestionarioState();
+}
+
+class QuestionarioState extends State<Questionario> {
+  String? selectedAlternativa1; // para armazenar a opção selecionada
+  String? selectedAlternativa2; // para armazenar a opção selecionada
+  String? selectedAlternativa3; // para armazenar a opção selecionada
+  Map<String, bool> selectedAlternativa4 = {
+    'A) Colors.red': false,
+    'B) hexColor("#FF5733")': false,
+    'C) Color(0xFFFF5733)': false,
+    'D) setColor("vermelho")': false,
+  };
+  String? selectedAlternativa5; // para armazenar a opção selecionada
+  String? selectedAlternativa6; // para armazenar a opção selecionada
+  String? selectedAlternativa7; // para armazenar a opção selecionada
+  String? selectedAlternativa8; // para armazenar a opção selecionada
+  String? selectedAlternativa9; // para armazenar a opção selecionada
+  String? selectedAlternativa10; // para armazenar a opção selecionada
+  String? selectedAlternativa11; // para armazenar a opção selecionada
+  String? selectedAlternativa12; // para armazenar a opção selecionada
+  String? selectedAlternativa13; // para armazenar a opção selecionada
+  String? selectedAlternativa14; // para armazenar a opção selecionada
+  String? selectedAlternativa15; // para armazenar a opção selecionada
+  String? selectedAlternativa16; // para armazenar a opção selecionada
+  String? selectedAlternativa17; // para armazenar a opção selecionada
+  String? selectedAlternativa18; // para armazenar a opção selecionada
+  String? selectedAlternativa19; // para armazenar a opção selecionada
+  String? selectedAlternativa20; // para armazenar a opção selecionada
+  String? selectedAlternativa21; // para armazenar a opção selecionada
+  String? selectedAlternativa22; // para armazenar a opção selecionada
+  String? selectedAlternativa23; // para armazenar a opção selecionada
+  String? selectedAlternativa24; // para armazenar a opção selecionada
+  String? selectedAlternativa25; // para armazenar a opção selecionada
+  String? selectedAlternativa26; // para armazenar a opção selecionada
+  String? selectedAlternativa27; // para armazenar a opção selecionada
+  String? selectedAlternativa28; // para armazenar a opção selecionada
+  Map<String, bool> selectedAlternativa29 = {
+    'A) TextStyle': false,
+    'B) TextDecoration': false,
+    'C) Container': false,
+    'D) FontWeight': false,
+  };
+  Map<String, bool> selectedAlternativa30 = {
+    'A) Padding': false,
+    'B) Align': false,
+    'C) Margin': false,
+    'D) SizedBox': false,
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'Questionário DS',
+          style: TextStyle(
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF673AB7),
+          ),
+        ),
+      ),
+
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              '1. Qual a vantagem de programação orientada a objetos?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta1(),
+              ),
+            ),
+
+            const Text(
+              '2. Qual o significado da sigla "POO" no contexto de desenvolvimento de software?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta2(),
+              ),
+            ),
+
+            const Text(
+              '3. Qual destas opções é uma maneira correta de declarar uma variável em Dart?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta3(),
+              ),
+            ),
+
+            const Text(
+              '4. Quais dessas opções são usadas para definir a cor de um widget em Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta4(),
+              ),
+            ),
+
+            const Text(
+              '5. Qual é a função principal do Dart?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta5(),
+              ),
+            ),
+
+            const Text(
+              '6. Qual destes widgets é usado para organizar elementos verticalmente?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta6(),
+              ),
+            ),
+
+            const Text(
+              '7. Qual é o principal arquivo de entrada de um aplicativo Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta7(),
+              ),
+            ),
+
+            const Text(
+              '8. Qual a linguagem utilizada para programar em Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta8(),
+              ),
+            ),
+
+            const Text(
+              '9. Qual método é usado para imprimir algo na tela em Dart?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta9(),
+              ),
+            ),
+
+            const Text(
+              '10. O que significa a sigla DS?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta10(),
+              ),
+            ),
+
+            const Text(
+              '11. Qual widget permite rolar o conteúdo na tela em Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta11(),
+              ),
+            ),
+
+            const Text(
+              '12. Qual desses widgets permite organizar elementos horizontalmente?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta12(),
+              ),
+            ),
+
+            const Text(
+              '13. Qual método é usado para converter um número em uma string em Dart?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta13(),
+              ),
+            ),
+
+            const Text(
+              '14. Qual desses widgets é usado para criar uma barra de navegação no topo da tela?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta14(),
+              ),
+            ),
+
+            const Text(
+              '15. Qual widget é usado para criar um campo de entrada de texto em Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta15(),
+              ),
+            ),
+
+            const Text(
+              '16. Qual sinal representa "OU" em Dart?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta16(),
+              ),
+            ),
+
+            const Text(
+              '17. Como definir um tamanho máximo para um widget em Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta17(),
+              ),
+            ),
+
+            const Text(
+              '18. Qual desses widgets é usado para criar um botão em Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta18(),
+              ),
+            ),
+
+            const Text(
+              '19. Qual desses sinais é usado para verificar igualdade em Dart?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta19(),
+              ),
+            ),
+
+            const Text(
+              '20. Qual widget é usado para estruturar a interface de um aplicativo Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta20(),
+              ),
+            ),
+
+            const Text(
+              '21. Qual widget permite criar um layout com elementos centralizados na tela?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta21(),
+              ),
+            ),
+
+            const Text(
+              '22. Qual widget permite adicionar espaçamento entre elementos em um layout Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta22(),
+              ),
+            ),
+
+            const Text(
+              '23. Qual widget permite adicionar uma barra de pesquisa no Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta23(),
+              ),
+            ),
+
+            const Text(
+              '24. Qual widget em Flutter pode ser usado para mostrar uma mensagem temporária na tela?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta24(),
+              ),
+            ),
+
+            const Text(
+              '25. Qual método em Dart é usado para converter um número decimal em inteiro?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta25(),
+              ),
+            ),
+
+            const Text(
+              '26. Qual empresa criou o Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta26(),
+              ),
+            ),
+
+            const Text(
+              '27. Qual widget é usado para exibir texto na tela em Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta27(),
+              ),
+            ),
+
+            const Text(
+              '28. Qual operador é usado para somar dois números em Dart?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta28(),
+              ),
+            ),
+
+            const Text(
+              '29. O que podemos utilizar para estilizar textos em Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta29(),
+              ),
+            ),
+
+            const Text(
+              '30. Quais das alternativas abaixo são usadas para definir espaçamento entre widgets no Flutter?',
+              style: TextStyle(
+                fontSize: 18.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: _buildPergunta30(),
+              ),
+            ),
+
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Color(0xFF673AB7),
+              ),
+              onPressed: _enviarQuestoes,
+              child: const Text('Enviar'),
+            ),
+
+            Padding(padding: const EdgeInsets.symmetric(vertical: 20.0)),
+            const Text(
+              'Desenvolvido por Thiago Henrique e Thiago Santos \nEtec 2025',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12.0,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF673AB7),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  List<String> alternativa1List = [
+    'A) Código mais organizado e reutilizável',
+    'B) Execução mais rápida do código',
+    'C) É mais fácil',
+    'D) Não precisa ter conhecimento para fazer ',
+  ];
+
+  List<Widget> _buildPergunta1() {
+    List<Widget> alternativas1 = [];
+
+    // Lista de cursos
+
+    for (String alternativa1 in alternativa1List) {
+      alternativas1.add(
+        RadioListTile<String>(
+          title: Text(alternativa1),
+          value: alternativa1,
+          groupValue: selectedAlternativa1,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa1 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas1;
+  }
+
+  List<String> alternativa2List = [
+    'A) Processo de Otimização de Operações',
+    'B) Programação Orientada a Objetos',
+    'C) Padrões de Organização de Output',
+    'D) Protocolo de Operação Online',
+  ];
+
+  List<Widget> _buildPergunta2() {
+    List<Widget> alternativas2 = [];
+
+    for (String alternativa2 in alternativa2List) {
+      alternativas2.add(
+        RadioListTile<String>(
+          title: Text(alternativa2),
+          value: alternativa2,
+          groupValue: selectedAlternativa2,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa2 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas2;
+  }
+
+  List<String> alternativa3List = [
+    'A) int numero = 10;',
+    'B) variavel numero = 10;',
+    'C) declare numero = 10;',
+    'D) valor numero = 10;',
+  ];
+
+  List<Widget> _buildPergunta3() {
+    List<Widget> alternativas3 = [];
+
+    for (String alternativa3 in alternativa3List) {
+      alternativas3.add(
+        RadioListTile<String>(
+          title: Text(alternativa3),
+          value: alternativa3,
+          groupValue: selectedAlternativa3,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa3 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas3;
+  }
+
+  List<Widget> _buildPergunta4() {
+    List<Widget> alternativas4 = [];
+
+    // percorre todos os itens armazendos na estrutura
+
+    // Map (chave, valor), obtendo os valores
+
+    selectedAlternativa4.forEach((String key, bool value) {
+      alternativas4.add(
+        // adiciona um item ao checkbox
+        CheckboxListTile(
+          title: Text(key), //adiciona título
+
+          value: value, // define valor
+          // implementa evento onChage para gerenciar
+
+          // valor do checkbox
+          onChanged: (newValue) {
+            //recebe valor atual
+
+            setState(() {
+              //altera o estado da variável
+
+              newValue != null
+                  ? //se diferente de null
+                  //alterna valor entre verdadeiro e falso
+                  selectedAlternativa4[key] == true
+                      ? selectedAlternativa4[key] = false
+                      : selectedAlternativa4[key] = true
+                  : selectedAlternativa4[key] = false;
+            });
+          },
+        ),
+      );
+    });
+
+    return alternativas4;
+  }
+
+  List<String> alternativa5List = [
+    'A) Criar páginas da web',
+    'B) Desenvolver aplicativos móveis com Flutter',
+    'C) Controlar bancos de dados',
+    'D) Criar animações 3D',
+  ];
+
+  List<Widget> _buildPergunta5() {
+    List<Widget> alternativas5 = [];
+
+    for (String alternativa5 in alternativa5List) {
+      alternativas5.add(
+        RadioListTile<String>(
+          title: Text(alternativa5),
+          value: alternativa5,
+          groupValue: selectedAlternativa5,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa5 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas5;
+  }
+
+  List<String> alternativa6List = [
+    'A) Column',
+    'B) Row',
+    'C) Stack',
+    'D) GridView',
+  ];
+
+  List<Widget> _buildPergunta6() {
+    List<Widget> alternativas6 = [];
+
+    for (String alternativa6 in alternativa6List) {
+      alternativas6.add(
+        RadioListTile<String>(
+          title: Text(alternativa6),
+          value: alternativa6,
+          groupValue: selectedAlternativa6,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa6 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas6;
+  }
+
+  List<String> alternativa7List = [
+    'A) main.dart',
+    'B) home.dart',
+    'C) app.dart',
+    'D) widget.dart',
+  ];
+
+  List<Widget> _buildPergunta7() {
+    List<Widget> alternativas7 = [];
+
+    for (String alternativa7 in alternativa7List) {
+      alternativas7.add(
+        RadioListTile<String>(
+          title: Text(alternativa7),
+          value: alternativa7,
+          groupValue: selectedAlternativa7,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa7 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas7;
+  }
+
+  List<String> alternativa8List = [
+    'A) Dart',
+    'B) React',
+    'C) JavaScript',
+    'D) Cobol',
+  ];
+
+  List<Widget> _buildPergunta8() {
+    List<Widget> alternativas8 = [];
+
+    for (String alternativa8 in alternativa8List) {
+      alternativas8.add(
+        RadioListTile<String>(
+          title: Text(alternativa8),
+          value: alternativa8,
+          groupValue: selectedAlternativa8,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa8 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas8;
+  }
+
+  List<String> alternativa9List = [
+    'A) echo()',
+    'B) display()',
+    'C) print()',
+    'D) console.log()',
+  ];
+
+  List<Widget> _buildPergunta9() {
+    List<Widget> alternativas9 = [];
+
+    for (String alternativa9 in alternativa9List) {
+      alternativas9.add(
+        RadioListTile<String>(
+          title: Text(alternativa9),
+          value: alternativa9,
+          groupValue: selectedAlternativa9,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa9 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas9;
+  }
+
+  List<String> alternativa10List = [
+    'A) Desenvolvimento de Software',
+    'B) Desenvolvimento de Sistemas',
+    'C) Debugar Sistemas',
+    'D) Desligar Sistema',
+  ];
+
+  List<Widget> _buildPergunta10() {
+    List<Widget> alternativas10 = [];
+
+    for (String alternativa10 in alternativa10List) {
+      alternativas10.add(
+        RadioListTile<String>(
+          title: Text(alternativa10),
+          value: alternativa10,
+          groupValue: selectedAlternativa10,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa10 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas10;
+  }
+
+  List<String> alternativa11List = [
+    'A) ListView',
+    'B) Column',
+    'C) ScrollView',
+    'D) Container',
+  ];
+
+  List<Widget> _buildPergunta11() {
+    List<Widget> alternativas11 = [];
+
+    for (String alternativa11 in alternativa11List) {
+      alternativas11.add(
+        RadioListTile<String>(
+          title: Text(alternativa11),
+          value: alternativa11,
+          groupValue: selectedAlternativa11,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa11 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas11;
+  }
+
+  List<String> alternativa12List = [
+    'A) Column',
+    'B) Row',
+    'C) Stack',
+    'D) Expanded',
+  ];
+
+  List<Widget> _buildPergunta12() {
+    List<Widget> alternativas12 = [];
+
+    for (String alternativa12 in alternativa12List) {
+      alternativas12.add(
+        RadioListTile<String>(
+          title: Text(alternativa12),
+          value: alternativa12,
+          groupValue: selectedAlternativa12,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa12 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas12;
+  }
+
+  List<String> alternativa13List = [
+    'A) toText()',
+    'B) convertToString()',
+    'C) parse()',
+    'D) toString()',
+  ];
+
+  List<Widget> _buildPergunta13() {
+    List<Widget> alternativas13 = [];
+
+    for (String alternativa13 in alternativa13List) {
+      alternativas13.add(
+        RadioListTile<String>(
+          title: Text(alternativa13),
+          value: alternativa13,
+          groupValue: selectedAlternativa13,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa13 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas13;
+  }
+
+  List<String> alternativa14List = [
+    'A) NavigationBar',
+    'B) AppBar',
+    'C) TopNav',
+    'D) NavWidget',
+  ];
+
+  List<Widget> _buildPergunta14() {
+    List<Widget> alternativas14 = [];
+
+    for (String alternativa14 in alternativa14List) {
+      alternativas14.add(
+        RadioListTile<String>(
+          title: Text(alternativa14),
+          value: alternativa14,
+          groupValue: selectedAlternativa14,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa14 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas14;
+  }
+
+  List<String> alternativa15List = [
+    'A) TextView',
+    'B) InputField',
+    'C) TextField',
+    'D) TextWidget',
+  ];
+
+  List<Widget> _buildPergunta15() {
+    List<Widget> alternativas15 = [];
+
+    for (String alternativa15 in alternativa15List) {
+      alternativas15.add(
+        RadioListTile<String>(
+          title: Text(alternativa15),
+          value: alternativa15,
+          groupValue: selectedAlternativa15,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa15 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas15;
+  }
+
+  List<String> alternativa16List = ['A) &&', 'B) !!', 'C) ||', 'D) =='];
+
+  List<Widget> _buildPergunta16() {
+    List<Widget> alternativas16 = [];
+
+    for (String alternativa16 in alternativa16List) {
+      alternativas16.add(
+        RadioListTile<String>(
+          title: Text(alternativa16),
+          value: alternativa16,
+          groupValue: selectedAlternativa16,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa16 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas16;
+  }
+
+  List<String> alternativa17List = [
+    'A) Usando Expanded',
+    'B) Usando MaxWidth',
+    'C) Usando SizedBox',
+    'D) Usando Row',
+  ];
+
+  List<Widget> _buildPergunta17() {
+    List<Widget> alternativas17 = [];
+
+    for (String alternativa17 in alternativa17List) {
+      alternativas17.add(
+        RadioListTile<String>(
+          title: Text(alternativa17),
+          value: alternativa17,
+          groupValue: selectedAlternativa17,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa17 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas17;
+  }
+
+  List<String> alternativa18List = [
+    'A) TextButton',
+    'B) ElevatedButton',
+    'C) RaisedButton',
+    'D) ContainerButton',
+  ];
+
+  List<Widget> _buildPergunta18() {
+    List<Widget> alternativas18 = [];
+
+    for (String alternativa18 in alternativa18List) {
+      alternativas18.add(
+        RadioListTile<String>(
+          title: Text(alternativa18),
+          value: alternativa18,
+          groupValue: selectedAlternativa18,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa18 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas18;
+  }
+
+  List<String> alternativa19List = ['A) =', 'B) ===', 'C) ==', 'D) !='];
+
+  List<Widget> _buildPergunta19() {
+    List<Widget> alternativas19 = [];
+
+    for (String alternativa19 in alternativa19List) {
+      alternativas19.add(
+        RadioListTile<String>(
+          title: Text(alternativa19),
+          value: alternativa19,
+          groupValue: selectedAlternativa19,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa19 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas19;
+  }
+
+  List<String> alternativa20List = [
+    'A) Scaffold',
+    'B) Container',
+    'C) Row',
+    'D) Text',
+  ];
+
+  List<Widget> _buildPergunta20() {
+    List<Widget> alternativas20 = [];
+
+    for (String alternativa20 in alternativa20List) {
+      alternativas20.add(
+        RadioListTile<String>(
+          title: Text(alternativa20),
+          value: alternativa20,
+          groupValue: selectedAlternativa20,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa20 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas20;
+  }
+
+  List<String> alternativa21List = [
+    'A) Row',
+    'B) Container',
+    'C) Center',
+    'D) Stack',
+  ];
+
+  List<Widget> _buildPergunta21() {
+    List<Widget> alternativas21 = [];
+
+    for (String alternativa21 in alternativa21List) {
+      alternativas21.add(
+        RadioListTile<String>(
+          title: Text(alternativa21),
+          value: alternativa21,
+          groupValue: selectedAlternativa21,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa21 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas21;
+  }
+
+  List<String> alternativa22List = [
+    'A) Padding',
+    'B) Column',
+    'C) SpacerBox',
+    'D) MarginView',
+  ];
+
+  List<Widget> _buildPergunta22() {
+    List<Widget> alternativas22 = [];
+
+    for (String alternativa22 in alternativa22List) {
+      alternativas22.add(
+        RadioListTile<String>(
+          title: Text(alternativa22),
+          value: alternativa22,
+          groupValue: selectedAlternativa22,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa22 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas22;
+  }
+
+  List<String> alternativa23List = [
+    'A) SearchBox',
+    'B) TextField',
+    'C) SearchWidget',
+    'D) InputBar',
+  ];
+
+  List<Widget> _buildPergunta23() {
+    List<Widget> alternativas23 = [];
+
+    for (String alternativa23 in alternativa23List) {
+      alternativas23.add(
+        RadioListTile<String>(
+          title: Text(alternativa23),
+          value: alternativa23,
+          groupValue: selectedAlternativa23,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa23 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas23;
+  }
+
+  List<String> alternativa24List = [
+    'A) Dialog',
+    'B) Snackbar',
+    'C) Popup',
+    'D) AlertBox',
+  ];
+
+  List<Widget> _buildPergunta24() {
+    List<Widget> alternativas24 = [];
+
+    for (String alternativa24 in alternativa24List) {
+      alternativas24.add(
+        RadioListTile<String>(
+          title: Text(alternativa24),
+          value: alternativa24,
+          groupValue: selectedAlternativa24,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa24 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas24;
+  }
+
+  List<String> alternativa25List = [
+    'A) convertToInt()',
+    'B) toFixed()',
+    'C) round()',
+    'D) toInt()',
+  ];
+
+  List<Widget> _buildPergunta25() {
+    List<Widget> alternativas25 = [];
+
+    for (String alternativa25 in alternativa25List) {
+      alternativas25.add(
+        RadioListTile<String>(
+          title: Text(alternativa25),
+          value: alternativa25,
+          groupValue: selectedAlternativa25,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa25 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas25;
+  }
+
+  List<String> alternativa26List = [
+    'A) Microsoft',
+    'B) Apple',
+    'C) Google',
+    'D) Amazon',
+  ];
+
+  List<Widget> _buildPergunta26() {
+    List<Widget> alternativas26 = [];
+
+    for (String alternativa26 in alternativa26List) {
+      alternativas26.add(
+        RadioListTile<String>(
+          title: Text(alternativa26),
+          value: alternativa26,
+          groupValue: selectedAlternativa26,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa26 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas26;
+  }
+
+  List<String> alternativa27List = [
+    'A) TextView',
+    'B) Label',
+    'C) Text',
+    'D) Paragraph',
+  ];
+
+  List<Widget> _buildPergunta27() {
+    List<Widget> alternativas27 = [];
+
+    for (String alternativa27 in alternativa27List) {
+      alternativas27.add(
+        RadioListTile<String>(
+          title: Text(alternativa27),
+          value: alternativa27,
+          groupValue: selectedAlternativa27,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa27 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas27;
+  }
+
+  List<String> alternativa28List = ['A) +', 'B) -', 'C) *', 'D) /'];
+
+  List<Widget> _buildPergunta28() {
+    List<Widget> alternativas28 = [];
+
+    for (String alternativa28 in alternativa28List) {
+      alternativas28.add(
+        RadioListTile<String>(
+          title: Text(alternativa28),
+          value: alternativa28,
+          groupValue: selectedAlternativa28,
+          onChanged: (String? value) {
+            setState(() {
+              selectedAlternativa28 = value;
+            });
+          },
+        ),
+      );
+    }
+
+    return alternativas28;
+  }
+
+  List<Widget> _buildPergunta29() {
+    List<Widget> alternativas29 = [];
+
+    // percorre todos os itens armazendos na estrutura
+
+    // Map (chave, valor), obtendo os valores
+
+    selectedAlternativa29.forEach((String key, bool value) {
+      alternativas29.add(
+        // adiciona um item ao checkbox
+        CheckboxListTile(
+          title: Text(key), //adiciona título
+
+          value: value, // define valor
+          // implementa evento onChage para gerenciar
+
+          // valor do checkbox
+          onChanged: (newValue) {
+            //recebe valor atual
+
+            setState(() {
+              //altera o estado da variável
+
+              newValue != null
+                  ? //se diferente de null
+                  //alterna valor entre verdadeiro e falso
+                  selectedAlternativa29[key] == true
+                      ? selectedAlternativa29[key] = false
+                      : selectedAlternativa29[key] = true
+                  : selectedAlternativa29[key] = false;
+            });
+          },
+        ),
+      );
+    });
+
+    return alternativas29;
+  }
+
+  List<Widget> _buildPergunta30() {
+    List<Widget> alternativas30 = [];
+
+    // percorre todos os itens armazendos na estrutura
+
+    // Map (chave, valor), obtendo os valores
+
+    selectedAlternativa30.forEach((String key, bool value) {
+      alternativas30.add(
+        // adiciona um item ao checkbox
+        CheckboxListTile(
+          title: Text(key), //adiciona título
+
+          value: value, // define valor
+          // implementa evento onChage para gerenciar
+
+          // valor do checkbox
+          onChanged: (newValue) {
+            //recebe valor atual
+
+            setState(() {
+              //altera o estado da variável
+
+              newValue != null
+                  ? //se diferente de null
+                  //alterna valor entre verdadeiro e falso
+                  selectedAlternativa30[key] == true
+                      ? selectedAlternativa30[key] = false
+                      : selectedAlternativa30[key] = true
+                  : selectedAlternativa30[key] = false;
+            });
+          },
+        ),
+      );
+    });
+
+    return alternativas30;
+  }
+    double _checkAcertos() {
+    double countAcertos = 0;
+
+    if (selectedAlternativa1 == alternativa1List[0] /* A) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa2 == alternativa2List[1] /* B) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa3 == alternativa3List[0] /* A) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa4['A) Colors.red'] == true &&
+        selectedAlternativa4['B) hexColor("#FF5733")'] == false &&
+        selectedAlternativa4['C) Color(0xFFFF5733)'] == true &&
+        selectedAlternativa4['D) setColor("vermelho")'] == false) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa5 == alternativa5List[1] /* B) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa6 == alternativa6List[0] /* A) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa7 == alternativa7List[0] /* A) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa8 == alternativa8List[0 /* A) */]) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa9 == alternativa9List[2 /* C) */]) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa10 == alternativa10List[1] /* B) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa11 == alternativa11List[2] /* C) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa12 == alternativa12List[1] /* B) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa13 == alternativa13List[3] /* D) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa14 == alternativa14List[1] /* B) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa15 == alternativa15List[2] /* C) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa16 == alternativa16List[2] /* C) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa17 == alternativa17List[2] /* C) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa18 == alternativa18List[1] /* B) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa19 == alternativa19List[2] /* C) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa20 == alternativa20List[0] /* A) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa21 == alternativa21List[2] /* C) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa22 == alternativa22List[0] /* A) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa23 == alternativa23List[1] /* B) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa24 == alternativa24List[1] /* B) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa25 == alternativa25List[2] /* C) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa26 == alternativa26List[2] /* C) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa27 == alternativa27List[2] /* C) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa28 == alternativa28List[0] /* A) */) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa29['A) TextStyle'] == true &&
+        selectedAlternativa29['B) TextDecoration'] == true &&
+        selectedAlternativa29['C) Container'] == false &&
+        selectedAlternativa29['D) FontWeight'] == true) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+    if (selectedAlternativa30['A) Padding'] == true &&
+        selectedAlternativa30['B) Align'] == false &&
+        selectedAlternativa30['C) Margin'] == true &&
+        selectedAlternativa30['D) SizedBox'] == true) {
+      countAcertos++;
+    } else {
+      countAcertos = countAcertos;
+    }
+    ;
+
+    return countAcertos;
+  }
+
+  double _porcentAcertos() {
+    double porcentAcertos = 0;
+    int qtdQuestoes =
+        30; // LEMBRAR DE ALTERAR O NÙM DE QUESTOES QUANDO ADICIONAR OUTRAS;
+
+    porcentAcertos = _checkAcertos() / qtdQuestoes * 100;
+    return porcentAcertos;
+  }
+
+  String _congratular() {
+    if (_porcentAcertos() > 75) {
+      return 'Parabéns, está acima da média!';
+    } else if (_porcentAcertos() >= 60) {
+      return 'Muito Bom!';
+    } else {
+      return 'Que pena, precisa refazer o questionário!';
+    }
+  }
+
+  void _enviarQuestoes() {
+    String mensagem = _congratular();
+
+    String resultado =
+        'Quantidade de acertos: ${_checkAcertos()} \nPorcentagem de acertos: ${_porcentAcertos().toStringAsFixed(2)}%';
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('${mensagem}'),
+          content: Text(resultado),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+}
